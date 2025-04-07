@@ -1,15 +1,19 @@
 {
-  "name": "template",
-  "version": "0.1.19",
+  "name": "bbw-scraper",
+  "version": "0.0.1",
   "description": "",
   "type": "module",
   "main": "index.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev": "nodemon",
     "start": "nodemon src/index.ts",
     "build": "tsc",
     "prepare": "husky",
-    "test": "jest"
+    "test": "jest",
+    "commit": "cz"
   },
   "keywords": [],
   "author": "Michael R Creel",
