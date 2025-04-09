@@ -10,10 +10,10 @@ beforeAll(async () => {
   } catch (error) {}
 })
 
-describe('GET /api/v1/products', () => {
+describe('GET /api/v0/products', () => {
   it('Responds with an array of products', async () =>
     request(app)
-      .get('/api/v1/products')
+      .get('/api/v0/products')
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200)
@@ -25,10 +25,10 @@ describe('GET /api/v1/products', () => {
 
 let id = ''
 
-describe('POST /api/v1/products', () => {
+describe('POST /api/v0/products', () => {
   it('responds with an error if the todo is invalid', async () =>
     request(app)
-      .post('/api/v1/products')
+      .post('/api/v0/products')
       .set('Accept', 'application/json')
       .send({
         upc: '',
@@ -40,7 +40,7 @@ describe('POST /api/v1/products', () => {
       }))
   it('responds with an inserted object', async () =>
     request(app)
-      .post('/api/v1/products')
+      .post('/api/v0/products')
       .set('Accept', 'application/json')
       .send({
         upc: '88888888',
@@ -57,10 +57,10 @@ describe('POST /api/v1/products', () => {
       }))
 })
 
-describe('GET /api/v1/product/:id', () => {
+describe('GET /api/v0/product/:id', () => {
   it('responds with a single product', async () =>
     request(app)
-      .get(`/api/v1/products/${id}`)
+      .get(`/api/v0/products/${id}`)
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200)
@@ -74,7 +74,7 @@ describe('GET /api/v1/product/:id', () => {
       }))
   it('responds with a Invalid ObjectId error', (done) => {
     request(app)
-      .get(`/api/v1/products/bgfdcytgtrfgt`)
+      .get(`/api/v0/products/bgfdcytgtrfgt`)
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(422, done)
@@ -82,17 +82,17 @@ describe('GET /api/v1/product/:id', () => {
 
   it('responds with a Not Found', (done) => {
     request(app)
-      .get(`/api/v1/products/673285d7e8c399ad80dc6b64`)
+      .get(`/api/v0/products/673285d7e8c399ad80dc6b64`)
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(404, done)
   })
 })
 
-describe('PUT /api/v1/product/:id', () => {
+describe('PUT /api/v0/product/:id', () => {
   it('responds with a Invalid ObjectId error', (done) => {
     request(app)
-      .put(`/api/v1/products/bgfdcytgtrfgt`)
+      .put(`/api/v0/products/bgfdcytgtrfgt`)
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(422, done)
@@ -100,7 +100,7 @@ describe('PUT /api/v1/product/:id', () => {
 
   it('responds with a Not Found', (done) => {
     request(app)
-      .put(`/api/v1/products/673285d7e8c399ad80dc6b64`)
+      .put(`/api/v0/products/673285d7e8c399ad80dc6b64`)
       .set('Accept', 'application/json')
       .send({
         upc: '88888888',
@@ -112,7 +112,7 @@ describe('PUT /api/v1/product/:id', () => {
 
   it('responds with a single updated product', async () =>
     request(app)
-      .put(`/api/v1/products/${id}`)
+      .put(`/api/v0/products/${id}`)
       .set('Accept', 'application/json')
       .send({
         upc: '88888888',
@@ -130,10 +130,10 @@ describe('PUT /api/v1/product/:id', () => {
       }))
 })
 
-describe('DELETE /api/v1/product/:id', () => {
+describe('DELETE /api/v0/product/:id', () => {
   it('responds with a Invalid ObjectId error', (done) => {
     request(app)
-      .delete(`/api/v1/products/bgfdcytgtrfgt`)
+      .delete(`/api/v0/products/bgfdcytgtrfgt`)
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(422, done)
@@ -141,19 +141,19 @@ describe('DELETE /api/v1/product/:id', () => {
 
   it('responds with a Not Found', (done) => {
     request(app)
-      .delete(`/api/v1/products/673285d7e8c399ad80dc6b64`)
+      .delete(`/api/v0/products/673285d7e8c399ad80dc6b64`)
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(404, done)
   })
 
   it('responds with a 204 status code', (done) => {
-    request(app).delete(`/api/v1/products/${id}`).expect(204, done)
+    request(app).delete(`/api/v0/products/${id}`).expect(204, done)
   })
 
   it('responds with a Not Found', (done) => {
     request(app)
-      .get(`/api/v1/products/${id}`)
+      .get(`/api/v0/products/${id}`)
       .set('Accept', 'application/json')
       .expect(404, done)
   })

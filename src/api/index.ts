@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.get(`/`, (req: Request, res: Response<MessageResponse>) => {
   res.json({
-    message: 'http://localhost:5000/api/v1',
+    message: 'http://localhost:5000/api/v0',
   })
 })
 
