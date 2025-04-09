@@ -1,5 +1,7 @@
-   {
-     "watch": ["src/**/*.ts"],
-     "ext": "ts",
-     "exec": "pnpm dlx tsx src/index.ts"
-   }
+    {
+      "watch": [
+        "src"
+      ],
+      "ext": "ts,tsx,js,jsx,json",
+      "exec": "tsx ./src/scraper.ts"
+    }
